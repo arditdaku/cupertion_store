@@ -14,8 +14,12 @@ class Product {
   final String name;
   final int price;
 
-  Product(@required this.category, @required this.id, @required this.isFeatured,
-      @required this.name, @required this.price)
+  const Product(
+      {@required this.category,
+      @required this.id,
+      @required this.isFeatured,
+      @required this.name,
+      @required this.price})
       : assert(category != null),
         assert(id != null),
         assert(isFeatured != null),
