@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 
 import 'model/app_state_model.dart';
-
+import 'constants.dart';
 import 'model/product.dart';
 import 'styles.dart';
 
@@ -18,7 +18,7 @@ class ProductRowItem extends StatelessWidget {
     final row = SafeArea(
       top: false,
       bottom: false,
-      minimum: const EdgeInsets.only(left: 16, top: 8, bottom: 8, right: 8),
+      minimum: kProductRowSafeAreaMin,
       child: Row(
         children: <Widget>[
           ClipRRect(
@@ -42,9 +42,7 @@ class ProductRowItem extends StatelessWidget {
                     product.name,
                     style: Styles.productRowItemName,
                   ),
-                  const Padding(
-                    padding: EdgeInsets.only(top: 8),
-                  ),
+                  kNamePricePadding,
                   Text(
                     '\$${product.price}',
                     style: Styles.productRowItemPrice,
@@ -59,11 +57,8 @@ class ProductRowItem extends StatelessWidget {
               final model = Provider.of<AppStateModel>(context, listen: false);
               model.addProductToCart(product.id);
             },
-            child: const Icon(
-              CupertinoIcons.plus_circled,
-              semanticLabel: 'Add',
-            ),
-          )
+            child: kAddIcon,
+          ),
         ],
       ),
     );
